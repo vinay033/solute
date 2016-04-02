@@ -30,8 +30,8 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
   
   ActionMailer::Base.smtp_settings = {
-    :user_name => ENV["USERNAME"],
-    :password => ENV["PASSWORD"],
+    :user_name => ENV['USER_IS'],
+    :password => ENV['PASSWORD_IS'],
     :domain => 'heroku.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
