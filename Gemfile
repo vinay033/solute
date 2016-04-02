@@ -24,6 +24,8 @@ gem 'carrierwave'
 gem "rmagick", "~> 2.13.1"
 gem 'cancancan', '~> 1.10'
 gem "select2-rails"
+
+gem 'rails_12factor', group: :production
 group :development do
   gem 'pry'
 end
