@@ -1,0 +1,42 @@
+<div class="col-md-4"></div>
+<div class="col-md-4 col-sm-8 col-xs-12 white_bg">
+  <h3>Update information</h3>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
+    <div class="form-group">
+    <%= devise_error_messages! %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <%= f.label :company_name %>
+      <%= f.text_field :company_name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :dob %>
+      <%= f.text_field :dob, class: 'form-control datepicker' %>
+    </div>
+
+    <div class="form-group select_image">
+      <i class="fa fa-file-image-o fa-2x"></i>&nbsp;
+      <label>Click to select profile image</label>
+    </div>
+    <div class="form-group">
+      <%= f.fields_for :image do |i| %>
+        <%= i.file_field :avatar, class: "form-control", id: "imageable"%>
+        <img id="blah" src="#" alt="your image"/>
+      <% end %>
+    </div>
+    
+    <%= f.submit 'Update', :class => 'btn btn-success' %>
+  <% end %>
+</div>
+<div class="col-md-4"></div>

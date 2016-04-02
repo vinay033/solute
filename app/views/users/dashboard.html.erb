@@ -1,0 +1,37 @@
+<h1 class="center">projects</h1>
+<div class="well">
+<%= link_to "New project", new_project_path, class: "btn btn-danger" %>
+</div>
+<% if !flash[:notice].blank? %>
+  <div class="alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<table class="table table-bordered table-striped">
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Created date</th>
+    <th>Submission date</th>
+    <th>Created_by</th>
+    
+  </tr>
+  <% if @projects.size > 0 %>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= image_tag(project.project_picture, width: "30px", class: "img-responsive") %></td>
+        <td><%= project.name %></td>
+        <td><%= project.description %></td>   
+        <td><%= project.submission_date %></td>
+        <td><%= project.created_at %></td>
+        <td><%= project.creater %></td>
+        <td><%= link_to 'Show', project %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="5">No projects available.</td>
+    </tr>
+  <% end %>
+</table>

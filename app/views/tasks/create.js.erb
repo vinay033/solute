@@ -1,0 +1,10 @@
+<% if @task_created %>
+  <% if @project.tasks.count == 1%>
+    $("#tasks_table").html("<%= escape_javascript(render :partial => 'tasks/tasks', :locals => {:project => @project}) %>");
+  <% else %>
+    $("#task_contain").prepend("<%= escape_javascript(render :partial => 'tasks/single_task', :locals => {:t => @task}) %>");  
+  <% end %>
+  $("#myModal").modal('toggle');
+<% else %>
+  $(".task_error_message").html("<%= render :partial => 'tasks/errors_message'.html_safe, :locals => { :task => @task } %>");
+<% end %>

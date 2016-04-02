@@ -1,0 +1,9 @@
+<% unless project.tasks.blank?%>
+  <div class="col-md-12 col-sm-8 col-xs-12" id='task_contain'>
+    <% project.tasks.each do |t|%>
+        <%= render :partial => 'tasks/single_task', :locals => {:t => t} %>
+    <% end %>
+  </div>
+<% else %>
+  <h5>No tasks available..!</h5>
+<% end %>

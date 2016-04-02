@@ -1,0 +1,45 @@
+<div class="col-md-6 col-sm-8 col-xs-12 white_bg">
+  <%= form_for(@project) do |f| %>
+    <% if @project.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@project.errors.count, "error") %></h2>
+
+        <ul>
+        <% @project.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name %><br>
+      <%= f.text_field :name ,class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :submission_date %><br>
+      <%= f.text_field :submission_date, class: 'form-control datepicker' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, class: 'form-control'%>
+    </div>
+
+    <div class="form-group select_image">
+      <i class="fa fa-file-image-o fa-2x"></i>&nbsp;
+      <label>Click to select project picture</label>
+    </div>
+    <div class="form-group">
+      <%= f.fields_for :image do |i| %>
+        <%= i.file_field :avatar, class: "form-control", id: "imageable"%>
+        <img id="blah" src="#" alt="your image"/>
+      <% end %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit 'Save', :class => 'btn btn-success' %>
+      <%= link_to 'Back', dashboard_path, class: "btn btn-info" %>
+    </div>
+  <% end %>
+    
+</div>
